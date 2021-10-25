@@ -1,0 +1,6 @@
+export enum EXECUTION_STATE {
+  PENDING,
+  CANCELLED,
+  REJECTED,
+  RESOLVED,
+}
