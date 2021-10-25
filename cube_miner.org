@@ -1,0 +1,86 @@
+#+title:Cube Miner
+#+author:Shawn Martin-Truesdell
+#+email:shawn@martin-truesdell.com
+
+A web application to support "Minesweeper" drafting MTG cubes
+
+* Abstract
+
+* Infrastructure
+
+- AWS
+  - [ ] Setup Cognito Anonymous UserPool for unauthenticated users
+  - [ ] Setup Cognito UserPool for authenticated users
+  - [ ] Setup DynamoDB tables
+    - User Table
+    - User Stats Table
+    - User Preferences Table
+    - Draft Table
+    - Draft Frames Table
+  - [ ] Setup S3
+  - [ ] Setup ECS
+  - [ ] Setup Load Balancer
+  - [ ] Setup Autoscaling Group
+
+* Service
+
+- [ ] Setup new ExpressJS (Typescript) project
+- [ ] Setup CI/CD deployments to ECS
+- [ ] Setup logging
+- [ ] Stub routes
+  - =/api/v1/draft/list=
+  - =/api/v1/draft/new=
+
+  - =/api/v1/draft/:draft_id=
+  - =/api/v1/draft/:draft_id/picks=
+
+  - =/api/v1/draft/:draft_id/broadcast=
+  - =/api/v1/draft/:draft_id/cancel=
+  - =/api/v1/draft/:draft_id/start=
+  - =/api/v1/draft/:draft_id/subscribe=
+  - =/api/v1/draft/:draft_id/unsubscribe=
+
+  - =/api/v1/draft/:draft_id/player/list=
+  - =/api/v1/draft/:draft_id/player/:user_id=
+  - =/api/v1/draft/:draft_id/player/:user_id/picks=
+
+  - =/api/v1/draft/:draft_id/player/add=
+  - =/api/v1/draft/:draft_id/player/:user_id/notify=
+  - =/api/v1/draft/:draft_id/player/:user_id/picks/enqueue=
+  - =/api/v1/draft/:draft_id/player/:user_id/picks/dequeue=
+  - =/api/v1/draft/:draft_id/player/:user_id/remove=
+
+  - =/api/v1/user=
+  - =/api/v1/user/:user_id=
+  - =/api/v1/user/:user_id/drafts=
+  - =/api/v1/user/:user_id/preferences=
+  - =/api/v1/user/:user_id/stats=
+
+- [ ] Setup core data structures
+  - =Draft=
+  - =DraftFrame=
+  - =User=
+  - =UserStats=
+  - =UserPreferences=
+
+* User Interface
+
+- [ ] Setup new React (Typescript) project
+- [ ] Setup CI/CD deployments to S3
+- [ ] Setup logging
+- [ ] Stub Views
+  - Dashboard / Landing Page
+  - Account Page
+  - Users List
+  - User Page
+  - Drafts List
+  - Create Draft
+  - Join Draft
+  - Draft Options
+  - Draft
+    - Pre-Draft
+    - Running
+    - Completed
+  - Deck Builder
+    - Edit
+    - View
