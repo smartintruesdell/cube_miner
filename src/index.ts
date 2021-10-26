@@ -10,6 +10,7 @@
  */
 import 'cross-fetch/polyfill';
 import fs = require('fs');
+import path = require('path');
 import https = require('https');
 import express = require('express');
 import * as Env from './lib/env';
@@ -38,12 +39,16 @@ service.use(errorLogger);
 Env.init();
 
 const PORT = Env.get('PORT').unwrapOr('3000');
-const KEY_PATH = Env.get('HTTPS_KEY_PATH').expect(
-  'HTTPS Key Path was unavailable. Ensure that "HTTPS_KEY_PATH" is set in your environment configuration'
-);
-const CERT_PATH = Env.get('HTTPS_CERT_PATH').expect(
-  'HTTPS Cert Path was unavailable. Ensure that "HTTPS_CERT_PATH" is set in your environment configuration'
-);
+const KEY_PATH = Env.get('TLS_KEY_PATH')
+  .map(path.resolve)
+  .expect(
+    'HTTPS Key Path was unavailable. Ensure that "TLS_KEY_PATH" is set in your environment configuration'
+  );
+const CERT_PATH = Env.get('TLS_CERT_PATH')
+  .map(path.resolve)
+  .expect(
+    'HTTPS Cert Path was unavailable. Ensure that "TLS_CERT_PATH" is set in your environment configuration'
+  );
 
 const server = https
   .createServer(
@@ -54,7 +59,7 @@ const server = https
     service
   )
   .listen(PORT, () => {
-    logger.info(`Server started on http://localhost:${PORT}`);
+    logger.info(`Server started on https://localhost:${PORT}`);
   });
 
 // Event Handling //////////////////////////////////////////////////////////////
