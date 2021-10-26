@@ -27,7 +27,7 @@ A web application to support "Minesweeper" drafting MTG cubes
 - [ ] Setup new ExpressJS (Typescript) project
 - [ ] Setup CI/CD deployments to ECS
 - [ ] Setup logging
-- [ ] Stub routes
+- [X] Stub routes
   - =/api/v1/draft/list=
   - =/api/v1/draft/new=
 

@@ -1,6 +1,6 @@
 import { RequestHandler } from 'express';
 
-export const list_drafts_handler: RequestHandler = async (
+export const get_user_preferences_handler: RequestHandler = async (
   _req,
   _res,
   _next
